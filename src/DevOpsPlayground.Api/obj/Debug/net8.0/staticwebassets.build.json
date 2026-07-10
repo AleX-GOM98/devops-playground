@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "hTgdwbsiL9jrKzfm0ulZ7rjfjJqJDZa8UxjKypWbZXM=",
+  "Source": "DevOpsPlayground.Api",
+  "BasePath": "_content/DevOpsPlayground.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
