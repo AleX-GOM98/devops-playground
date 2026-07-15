@@ -1,3 +1,3 @@
 # DevOps Playground
 
-Projeto incremental para estudos de DevOps e Platform Engineering.
+Projeto incremental para estudos de DevOps, Platform Engineering e Cloud Native.
