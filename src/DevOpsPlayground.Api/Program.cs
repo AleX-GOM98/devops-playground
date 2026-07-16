@@ -1,5 +1,11 @@
 using DevOpsPlayground.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
+using DevOpsPlayground.Application.Clientes.Interfaces;
+using DevOpsPlayground.Application.Clientes.Services;
+using DevOpsPlayground.Application.Produtos.Interfaces;
+using DevOpsPlayground.Application.Produtos.Services;
+using DevOpsPlayground.Api.Middlewares;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,10 +14,34 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks();
+builder.Services.AddScoped<IClienteService, ClienteService>();
+builder.Services.AddScoped<IProdutoService, ProdutoService>();
+builder.Services.AddControllers();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(
         builder.Configuration.GetConnectionString("Postgres")));
+
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.InvalidModelStateResponseFactory = context =>
+    {
+        var errors = context.ModelState
+            .Where(x => x.Value?.Errors.Count > 0)
+            .Select(x => new
+            {
+                Campo = x.Key,
+                Erros = x.Value!.Errors.Select(e => e.ErrorMessage)
+            });
+
+        return new BadRequestObjectResult(new
+        {
+            Message = "Erro de validação.",
+            Errors = errors
+        });
+    };
+});
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -20,8 +50,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<ExceptionMiddleware>();
 app.UseHttpsRedirection();
 app.MapHealthChecks("/health");
+app.MapControllers();
 
 var summaries = new[]
 {

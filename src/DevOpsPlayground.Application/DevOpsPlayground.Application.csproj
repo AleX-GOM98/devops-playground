@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DevOpsPlayground.Domain\DevOpsPlayground.Domain.csproj" />
+    <ProjectReference Include="..\DevOpsPlayground.Infrastructure\DevOpsPlayground.Infrastructure.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

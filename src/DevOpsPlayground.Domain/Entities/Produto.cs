@@ -22,9 +22,21 @@ public class Produto : BaseEntity
         Estoque = estoque;
     }
 
+    public void AlterarNome(string nome)
+    {
+        Nome = nome;
+        MarkAsUpdated();
+    }
+
     public void AtualizarPreco(decimal preco)
     {
         Preco = preco;
+        MarkAsUpdated();
+    }
+
+    public void AtualizarEstoque(int estoque)
+    {
+        Estoque = estoque;
         MarkAsUpdated();
     }
 

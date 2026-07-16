@@ -25,4 +25,10 @@ public class Cliente : BaseEntity
         Email = email;
         MarkAsUpdated();
     }
+
+    public void AlterarNome(string nome)
+    {
+        Nome = nome;
+        MarkAsUpdated();
+    }
 }
