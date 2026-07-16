@@ -8,6 +8,8 @@
     ".NETCoreApp,Version=v8.0": {
       "DevOpsPlayground.Api/1.0.0": {
         "dependencies": {
+          "DevOpsPlayground.Application": "1.0.0",
+          "DevOpsPlayground.Infrastructure": "1.0.0",
           "Microsoft.AspNetCore.Diagnostics.HealthChecks": "2.2.0",
           "Microsoft.AspNetCore.OpenApi": "8.0.28",
           "Swashbuckle.AspNetCore": "6.6.2"
@@ -144,7 +146,28 @@
       "System.ComponentModel.Annotations/4.5.0": {},
       "System.Memory/4.5.1": {},
       "System.Runtime.CompilerServices.Unsafe/4.5.1": {},
-      "System.Text.Encodings.Web/4.5.0": {}
+      "System.Text.Encodings.Web/4.5.0": {},
+      "DevOpsPlayground.Application/1.0.0": {
+        "dependencies": {
+          "DevOpsPlayground.Domain": "1.0.0"
+        },
+        "runtime": {
+          "DevOpsPlayground.Application.dll": {}
+        }
+      },
+      "DevOpsPlayground.Domain/1.0.0": {
+        "runtime": {
+          "DevOpsPlayground.Domain.dll": {}
+        }
+      },
+      "DevOpsPlayground.Infrastructure/1.0.0": {
+        "dependencies": {
+          "DevOpsPlayground.Domain": "1.0.0"
+        },
+        "runtime": {
+          "DevOpsPlayground.Infrastructure.dll": {}
+        }
+      }
     }
   },
   "libraries": {
@@ -327,6 +350,21 @@
       "sha512": "sha512-Xg4G4Indi4dqP1iuAiMSwpiWS54ZghzR644OtsRCm/m/lBMG8dUBhLVN7hLm8NNrNTR+iGbshCPTwrvxZPlm4g==",
       "path": "system.text.encodings.web/4.5.0",
       "hashPath": "system.text.encodings.web.4.5.0.nupkg.sha512"
+    },
+    "DevOpsPlayground.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DevOpsPlayground.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DevOpsPlayground.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

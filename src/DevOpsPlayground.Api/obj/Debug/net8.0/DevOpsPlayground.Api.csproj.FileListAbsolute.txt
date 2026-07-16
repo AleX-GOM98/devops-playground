@@ -32,3 +32,9 @@
 /home/leco/Projects/devops-playground/src/DevOpsPlayground.Api/obj/Debug/net8.0/DevOpsPlayground.Api.pdb
 /home/leco/Projects/devops-playground/src/DevOpsPlayground.Api/obj/Debug/net8.0/DevOpsPlayground.Api.genruntimeconfig.cache
 /home/leco/Projects/devops-playground/src/DevOpsPlayground.Api/obj/Debug/net8.0/ref/DevOpsPlayground.Api.dll
+/home/leco/Projects/devops-playground/src/DevOpsPlayground.Api/bin/Debug/net8.0/DevOpsPlayground.Application.dll
+/home/leco/Projects/devops-playground/src/DevOpsPlayground.Api/bin/Debug/net8.0/DevOpsPlayground.Domain.dll
+/home/leco/Projects/devops-playground/src/DevOpsPlayground.Api/bin/Debug/net8.0/DevOpsPlayground.Infrastructure.dll
+/home/leco/Projects/devops-playground/src/DevOpsPlayground.Api/bin/Debug/net8.0/DevOpsPlayground.Application.pdb
+/home/leco/Projects/devops-playground/src/DevOpsPlayground.Api/bin/Debug/net8.0/DevOpsPlayground.Infrastructure.pdb
+/home/leco/Projects/devops-playground/src/DevOpsPlayground.Api/bin/Debug/net8.0/DevOpsPlayground.Domain.pdb

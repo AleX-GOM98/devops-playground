@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ayTPuUkkBuW15KTfwDG01WTsUgiGziqG1+ZN9r6SnuOkerT7fR8qDpnj7GJVECharOBc3Iy1sZ2IiPFH8vTErQ==",
+  "dgSpecHash": "atqfcIV3hWNhjeb4ScZ9EGhEsYQg7qG75aKDzdv2BVo90KpD/dt+LIIdbroDOTrJmWvNzmF0UVw/Km0X6OERFg==",
   "success": true,
   "projectFilePath": "/home/leco/Projects/devops-playground/src/DevOpsPlayground.Api/DevOpsPlayground.Api.csproj",
   "expectedPackageFiles": [

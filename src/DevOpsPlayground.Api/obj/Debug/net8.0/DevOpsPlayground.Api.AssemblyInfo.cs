@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DevOpsPlayground.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+11a82952f38598441fb3b1aabb496a23d7ddb50f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3991401e828782578095a96667c7a89e3eaef67e")]
 [assembly: System.Reflection.AssemblyProductAttribute("DevOpsPlayground.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DevOpsPlayground.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

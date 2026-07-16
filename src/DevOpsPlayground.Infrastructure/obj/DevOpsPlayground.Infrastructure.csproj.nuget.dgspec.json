@@ -1,0 +1,118 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/leco/Projects/devops-playground/src/DevOpsPlayground.Infrastructure/DevOpsPlayground.Infrastructure.csproj": {}
+  },
+  "projects": {
+    "/home/leco/Projects/devops-playground/src/DevOpsPlayground.Domain/DevOpsPlayground.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/leco/Projects/devops-playground/src/DevOpsPlayground.Domain/DevOpsPlayground.Domain.csproj",
+        "projectName": "DevOpsPlayground.Domain",
+        "projectPath": "/home/leco/Projects/devops-playground/src/DevOpsPlayground.Domain/DevOpsPlayground.Domain.csproj",
+        "packagesPath": "/home/leco/.nuget/packages/",
+        "outputPath": "/home/leco/Projects/devops-playground/src/DevOpsPlayground.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/leco/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.129/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/leco/Projects/devops-playground/src/DevOpsPlayground.Infrastructure/DevOpsPlayground.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/leco/Projects/devops-playground/src/DevOpsPlayground.Infrastructure/DevOpsPlayground.Infrastructure.csproj",
+        "projectName": "DevOpsPlayground.Infrastructure",
+        "projectPath": "/home/leco/Projects/devops-playground/src/DevOpsPlayground.Infrastructure/DevOpsPlayground.Infrastructure.csproj",
+        "packagesPath": "/home/leco/.nuget/packages/",
+        "outputPath": "/home/leco/Projects/devops-playground/src/DevOpsPlayground.Infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/leco/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/leco/Projects/devops-playground/src/DevOpsPlayground.Domain/DevOpsPlayground.Domain.csproj": {
+                "projectPath": "/home/leco/Projects/devops-playground/src/DevOpsPlayground.Domain/DevOpsPlayground.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.129/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
