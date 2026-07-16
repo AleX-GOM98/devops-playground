@@ -1,12 +1,45 @@
+using DevOpsPlayground.Domain.Common;
+
 namespace DevOpsPlayground.Domain.Entities;
 
-public class Produto
+public class Produto : BaseEntity
 {
-    public Guid Id { get; set; }
+    public string Nome { get; private set; }
 
-    public string Nome { get; set; } = string.Empty;
+    public decimal Preco { get; private set; }
 
-    public decimal Preco { get; set; }
+    public int Estoque { get; private set; }
 
-    public int Estoque { get; set; }
+    private Produto()
+    {
+        Nome = string.Empty;
+    }
+
+    public Produto(string nome, decimal preco, int estoque)
+    {
+        Nome = nome;
+        Preco = preco;
+        Estoque = estoque;
+    }
+
+    public void AtualizarPreco(decimal preco)
+    {
+        Preco = preco;
+        MarkAsUpdated();
+    }
+
+    public void AdicionarEstoque(int quantidade)
+    {
+        Estoque += quantidade;
+        MarkAsUpdated();
+    }
+
+    public void BaixarEstoque(int quantidade)
+    {
+        if (quantidade > Estoque)
+            throw new InvalidOperationException("Estoque insuficiente.");
+
+        Estoque -= quantidade;
+        MarkAsUpdated();
+    }
 }

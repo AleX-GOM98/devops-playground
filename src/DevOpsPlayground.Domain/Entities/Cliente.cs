@@ -1,12 +1,28 @@
+using DevOpsPlayground.Domain.Common;
+
 namespace DevOpsPlayground.Domain.Entities;
 
-public class Cliente
+public class Cliente : BaseEntity
 {
-    public Guid Id { get; set; }
+    public string Nome { get; private set; }
 
-    public string Nome { get; set; } = string.Empty;
+    public string Email { get; private set; }
 
-    public string Email { get; set; } = string.Empty;
+    private Cliente()
+    {
+        Nome = string.Empty;
+        Email = string.Empty;
+    }
 
-    public DateTime DataCadastro { get; set; } = DateTime.UtcNow;
+    public Cliente(string nome, string email)
+    {
+        Nome = nome;
+        Email = email;
+    }
+
+    public void AlterarEmail(string email)
+    {
+        Email = email;
+        MarkAsUpdated();
+    }
 }

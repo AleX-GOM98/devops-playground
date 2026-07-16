@@ -1,12 +1,23 @@
+using DevOpsPlayground.Domain.Common;
+
 namespace DevOpsPlayground.Domain.Entities;
 
-public class Pedido
+public class Pedido : BaseEntity
 {
-    public Guid Id { get; set; }
+    public Guid ClienteId { get; private set; }
 
-    public Guid ClienteId { get; set; }
+    public DateTime DataPedido { get; private set; }
 
-    public DateTime DataPedido { get; set; } = DateTime.UtcNow;
+    public decimal ValorTotal { get; private set; }
 
-    public decimal ValorTotal { get; set; }
+    private Pedido()
+    {
+    }
+
+    public Pedido(Guid clienteId, decimal valorTotal)
+    {
+        ClienteId = clienteId;
+        ValorTotal = valorTotal;
+        DataPedido = DateTime.UtcNow;
+    }
 }
