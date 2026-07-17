@@ -4,6 +4,8 @@ using DevOpsPlayground.Application.Clientes.Interfaces;
 using DevOpsPlayground.Application.Clientes.Services;
 using DevOpsPlayground.Application.Produtos.Interfaces;
 using DevOpsPlayground.Application.Produtos.Services;
+using DevOpsPlayground.Application.Pedidos.Interfaces;
+using DevOpsPlayground.Application.Pedidos.Services;
 using DevOpsPlayground.Api.Middlewares;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,6 +18,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks();
 builder.Services.AddScoped<IClienteService, ClienteService>();
 builder.Services.AddScoped<IProdutoService, ProdutoService>();
+builder.Services.AddScoped<IPedidoService, PedidoService>();
 builder.Services.AddControllers();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(

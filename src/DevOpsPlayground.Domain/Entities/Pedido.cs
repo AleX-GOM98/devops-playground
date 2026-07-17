@@ -20,4 +20,22 @@ public class Pedido : BaseEntity
         ValorTotal = valorTotal;
         DataPedido = DateTime.UtcNow;
     }
+
+    public void AlterarCliente(Guid clienteId)
+    {
+        ClienteId = clienteId;
+        MarkAsUpdated();
+    }
+
+    public void AlterarDataPedido(DateTime dataPedido)
+    {
+        DataPedido = dataPedido;
+        MarkAsUpdated();
+    }
+
+    public void AlterarValorTotal(decimal valorTotal)
+    {
+        ValorTotal = valorTotal;
+        MarkAsUpdated();
+    }
 }
