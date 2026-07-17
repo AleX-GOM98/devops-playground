@@ -1,0 +1,46 @@
+# Build
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# VS Code
+.vscode/
+
+# Rider
+.idea/
+
+# Logs
+*.log
+
+# Test Results
+TestResults/
+
+# NuGet
+*.nupkg
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# Kubernetes
+*.kubeconfig
+
+# Docker
+docker-compose.override.yml
+
+# Environment
+.env
+.env.*
+
+# Coverage
+coverage/
+coverage.xml
