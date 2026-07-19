@@ -1,5 +1,40 @@
-bin/
-obj/
-.vs/
-.git/
+# Git
+.git
 .gitignore
+
+# IDEs
+.vscode/
+.vs/
+.idea/
+
+# Build
+**/bin/
+**/obj/
+
+# Testes
+TestResults/
+
+# Docker
+docker-compose.override.yml
+
+# Logs
+*.log
+
+# Sistema Operacional
+.DS_Store
+Thumbs.db
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# Kubernetes
+*.kubeconfig
+
+# Documentação
+README.md
+docs/
+
+# Arquivos temporários
+temp/
