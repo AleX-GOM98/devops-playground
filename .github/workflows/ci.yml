@@ -1,0 +1,28 @@
+name: DevOps Playground CI
+
+on:
+  push:
+    branches:
+      - main
+      - feature/**
+      - bugfix/**
+      - hotfix/**
+      - chore/**
+      - docs/**
+      - refactor/**
+      - test/**
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
