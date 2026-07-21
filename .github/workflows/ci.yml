@@ -28,6 +28,22 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
-      
+          cache: true
+
       - name: Restore dependencies
         run: dotnet restore DevOpsPlayground.sln
+
+      - name: Build solution
+        run: dotnet build DevOpsPlayground.sln --configuration Release --no-restore
+
+      - name: Run tests
+        run: dotnet test DevOpsPlayground.sln \
+          --configuration Release \
+          --no-build \
+          --verbosity normal
+
+      - name: Build Docker image
+        run: |
+          docker build \
+            -t devops-playground-api:ci \
+            -f src/DevOpsPlayground.Api/Dockerfile .
