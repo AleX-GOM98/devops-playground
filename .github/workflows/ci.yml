@@ -37,10 +37,7 @@ jobs:
         run: dotnet build DevOpsPlayground.sln --configuration Release --no-restore
 
       - name: Run tests
-        run: dotnet test DevOpsPlayground.sln \
-          --configuration Release \
-          --no-build \
-          --verbosity normal
+        run: dotnet test DevOpsPlayground.sln --configuration Release --no-build --verbosity normal
 
       - name: Build Docker image
         run: |
