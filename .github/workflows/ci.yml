@@ -1,5 +1,10 @@
 name: DevOps Playground CI
 
+env:
+  DOTNET_VERSION: '8.0.x'
+  IMAGE_NAME: devops-playground-api
+  REGISTRY: ghcr.io/alex-gom98
+
 permissions:
   contents: read
   packages: write
@@ -31,7 +36,7 @@ jobs:
       - name: Setup .NET 8
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: ${{ env.DOTNET_VERSION }}
 
 
       - name: Restore dependencies
@@ -61,5 +66,5 @@ jobs:
           file: src/DevOpsPlayground.Api/Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ steps.repo.outputs.owner }}/devops-playground-api:latest
-            ghcr.io/${{ steps.repo.outputs.owner }}/devops-playground-api:v0.6.0
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:v0.6.0
