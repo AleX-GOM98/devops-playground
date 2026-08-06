@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: {{ .Values.api.service.name }}
+  namespace: {{ include "devops-playground.namespace" . }}
+
+spec:
+  replicas: {{ .Values.api.deployment.replicas }}
+
+  selector:
+    matchLabels:
+      app: {{ include "devops-playground.apiLabel" . }}
+
+  template:
+    metadata:
+      labels:
+        app: {{ include "devops-playground.apiLabel" . }}
+
+    spec:
+      containers:
+        - name: devops-api
+
+          image: "{{ .Values.api.image.repository }}:{{ .Values.api.image.tag }}"
+          imagePullPolicy: {{ .Values.api.image.pullPolicy }}
+
+          ports:
+            - containerPort: {{ .Values.api.service.targetPort }}
+
+          envFrom:
+            - configMapRef:
+                name: devops-api-config
+
+            - secretRef:
+                name: devops-api-secret
+
+          resources:
+            requests:
+              cpu: {{ .Values.api.resources.requests.cpu | quote }}
+              memory: {{ .Values.api.resources.requests.memory | quote }}
+
+            limits:
+              cpu: {{ .Values.api.resources.limits.cpu | quote }}
+              memory: {{ .Values.api.resources.limits.memory | quote }}
+
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.api.probes.readiness.path }}
+              port: {{ .Values.api.service.targetPort }}
+
+            initialDelaySeconds: {{ .Values.api.probes.readiness.initialDelaySeconds }}
+            periodSeconds: {{ .Values.api.probes.readiness.periodSeconds }}
+
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.api.probes.liveness.path }}
+              port: {{ .Values.api.service.targetPort }}
+
+            initialDelaySeconds: {{ .Values.api.probes.liveness.initialDelaySeconds }}
+            periodSeconds: {{ .Values.api.probes.liveness.periodSeconds }}

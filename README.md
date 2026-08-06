@@ -43,11 +43,17 @@ GitHub Actions
                 │
                 ▼
 GitHub Container Registry
+                │
+                ▼
+        Helm Chart
+                │
+                ▼
+      Kubernetes (Kind)
+                │
+      ├── Ingress
+      ├── API (.NET)
+      └── PostgreSQL
 ```
-
-> A partir da Semana 7 a aplicação será implantada em um cluster Kubernetes (Kind).
-
----
 
 # 🛠 Tecnologias
 
@@ -77,11 +83,15 @@ GitHub Container Registry
 - PostgreSQL
 - Entity Framework Core
 
-### Kubernetes (em andamento)
+### Kubernetes 
 
 - Kind
 - kubectl
 - Helm
+- Kustomize
+
+### GitOps (planejado)
+
 - ArgoCD
 
 ### Observabilidade (planejado)
@@ -106,6 +116,7 @@ GitHub Container Registry
 ├── docker/
 ├── docs/
 ├── helm/
+│   └── devops-playground/
 ├── kubernetes/
 ├── observability/
 ├── scripts/
@@ -133,6 +144,39 @@ A pipeline executa automaticamente:
 - Publicação da imagem no GitHub Container Registry
 
 ---
+
+# ⛵ Helm
+
+A aplicação é distribuída por meio de um Helm Chart localizado em:
+
+```text
+helm/devops-playground
+```
+
+O Chart contém templates para:
+
+- Namespace
+- ConfigMap
+- Secrets
+- PostgreSQL
+- API
+- PersistentVolumeClaim
+- Ingress
+
+Principais comandos:
+
+```bash
+helm lint ./helm/devops-playground
+
+helm template devops-playground ./helm/devops-playground
+
+helm install devops-playground ./helm/devops-playground
+
+helm upgrade devops-playground ./helm/devops-playground
+```
+
+---
+
 
 # 🌿 Estratégia de Branches
 
@@ -167,7 +211,8 @@ O projeto utiliza **Semantic Versioning**.
 | v0.4.0 | Aplicação .NET |
 | v0.5.0 | Docker e Docker Compose |
 | v0.6.0 | GitHub Actions e CI |
-
+| v0.7.0 | Kubernetes (Kind, Deployments, Services, Ingress, PVCs) |
+| v0.8.0 | Helm Charts, Templates, ConfigMaps, Secrets e Releases |
 ---
 
 # ▶ Como executar
@@ -202,6 +247,34 @@ dotnet test
 docker compose up -d
 ```
 
+## Kubernetes
+
+Aplicar os manifestos:
+
+```bash
+kubectl apply -k kubernetes/base
+```
+
+## Helm
+
+Renderizar os templates:
+
+```bash
+helm template devops-playground ./helm/devops-playground
+```
+
+Instalar:
+
+```bash
+helm install devops-playground ./helm/devops-playground
+```
+
+Atualizar:
+
+```bash
+helm upgrade devops-playground ./helm/devops-playground
+```
+
 ---
 
 # 📈 Roadmap
@@ -212,8 +285,8 @@ docker compose up -d
 - [x] Semana 4 - .NET
 - [x] Semana 5 - Docker
 - [x] Semana 6 - GitHub Actions
-- [ ] Semana 7 - Kubernetes
-- [ ] Semana 8 - Helm
+- [x] Semana 7 - Kubernetes
+- [x] Semana 8 - Helm
 - [ ] Semana 9 - ArgoCD
 - [ ] Semana 10 - Terraform
 - [ ] Semana 11 - Ansible

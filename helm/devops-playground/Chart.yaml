@@ -1,0 +1,16 @@
+apiVersion: v2
+name: devops-playground
+description: Helm Chart for DevOps Playground
+
+type: application
+
+version: 0.8.0
+appVersion: "0.8.0"
+
+keywords:
+  - dotnet
+  - kubernetes
+  - helm
+  - devops
+
+home: https://github.com/AleX-GOM98/devops-playground

@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+
+metadata:
+  name: devops-api
+  namespace: devops-playground
+
+spec:
+
+  ingressClassName: nginx
+
+  rules:
+
+  - host: devops-playground.local
+
+    http:
+
+      paths:
+
+      - path: /
+
+        pathType: Prefix
+
+        backend:
+
+          service:
+
+            name: devops-api
+
+            port:
+
+              number: 80

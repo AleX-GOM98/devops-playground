@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: postgres
+  namespace: {{ include "devops-playground.namespace" . }}
+
+spec:
+  replicas: {{ .Values.postgres.deployment.replicas }}
+
+  selector:
+    matchLabels:
+      app: {{ include "devops-playground.postgresLabel" . }}
+
+  template:
+    metadata:
+      labels:
+        app: {{ include "devops-playground.postgresLabel" . }}
+
+    spec:
+      containers:
+        - name: postgres
+
+          image: "{{ .Values.postgres.image.repository }}:{{ .Values.postgres.image.tag }}"
+
+          ports:
+            - containerPort: {{ .Values.postgres.service.port }}
+
+          envFrom:
+            - secretRef:
+                name: postgres-secret
+
+          volumeMounts:
+            - name: postgres-storage
+              mountPath: /var/lib/postgresql/data
+
+      volumes:
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: {{ .Values.postgres.persistence.name }}

@@ -1,0 +1,89 @@
+namespace:
+  name: devops-playground
+
+config:
+  aspnetEnvironment: Development
+
+database:
+  host: postgres
+  port: "5432"
+  name: devopsdb
+
+secret:
+  postgres:
+    username: postgres
+    password: postgres
+
+  api:
+    username: postgres
+    password: postgres
+
+image:
+  repository: ghcr.io/alex-gom98/devops-playground-api
+  tag: v0.8.0
+  pullPolicy: IfNotPresent
+
+postgres:
+  image:
+    repository: postgres
+    tag: "16"
+
+  deployment:
+    replicas: 1
+
+  service:
+    name: postgres
+    type: ClusterIP
+    port: 5432
+
+  persistence:
+    name: postgres-pvc
+    storageClass: standard
+    accessMode: ReadWriteOnce
+    size: 1Gi
+
+api:
+  deployment:
+    replicas: 1
+
+  image:
+    repository: ghcr.io/alex-gom98/devops-playground-api
+    tag: v0.8.0
+    pullPolicy: IfNotPresent
+
+  service:
+    name: devops-api
+    type: ClusterIP
+    port: 80
+    targetPort: 8080
+
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+
+    limits:
+      cpu: "500m"
+      memory: "512Mi"
+
+  probes:
+    readiness:
+      path: /health
+      initialDelaySeconds: 15
+      periodSeconds: 10
+
+    liveness:
+      path: /health
+      initialDelaySeconds: 30
+      periodSeconds: 20
+
+ingress:
+  enabled: true
+
+  className: nginx
+
+  host: devops-playground.local
+
+  path: /
+
+  pathType: Prefix

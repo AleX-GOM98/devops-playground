@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: devops-api
+  namespace: devops-playground
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: devops-api
+
+  template:
+    metadata:
+      labels:
+        app: devops-api
+
+    spec:
+      containers:
+
+      - name: devops-api
+
+        image: ghcr.io/alex-gom98/devops-playground-api:v0.6.0
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+        - containerPort: 8080
+
+        envFrom:
+        - configMapRef:
+            name: api-config
+
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+
+          initialDelaySeconds: 15
+          periodSeconds: 10
+
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+
+          initialDelaySeconds: 30
+          periodSeconds: 20
