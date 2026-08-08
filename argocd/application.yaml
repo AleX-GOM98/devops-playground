@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: devops-playground
+  namespace: argocd
+
+spec:
+
+  project: devops-playground
+
+  source:
+    repoURL: https://github.com/AleX-GOM98/devops-playground.git
+    targetRevision: main
+    path: helm/devops-playground
+
+    helm:
+      valueFiles:
+        - values.yaml
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: devops-playground
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+    syncOptions:
+      - CreateNamespace=true
