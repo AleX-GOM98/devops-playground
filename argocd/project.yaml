@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+
+metadata:
+  name: devops-playground
+  namespace: argocd
+
+spec:
+  description: Projeto GitOps do DevOps Playground
+
+  sourceRepos:
+    - "https://github.com/AleX-GOM98/devops-playground.git"
+
+  destinations:
+    - namespace: devops-playground
+      server: https://kubernetes.default.svc
+
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+
+  namespaceResourceWhitelist:
+    - group: "*"
+      kind: "*"

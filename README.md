@@ -27,32 +27,33 @@ O objetivo é construir uma aplicação .NET evoluindo gradualmente desde o dese
 ```text
 Developer
      │
-git push
-     │
+     │ git push
      ▼
 GitHub
      │
-     ▼
-GitHub Actions
+     ├── GitHub Actions
+     │      ├── Restore
+     │      ├── Build
+     │      ├── Test
+     │      ├── Docker Build
+     │      └── Push GHCR
      │
-     ├── Restore
-     ├── Build
-     ├── Test
-     ├── Docker Build
-     └── Push GHCR
-                │
-                ▼
+     ▼
 GitHub Container Registry
-                │
-                ▼
-        Helm Chart
-                │
-                ▼
-      Kubernetes (Kind)
-                │
-      ├── Ingress
-      ├── API (.NET)
-      └── PostgreSQL
+     │
+     ▼
+Helm Chart
+     │
+     ▼
+ArgoCD
+     │
+     │ GitOps / Auto Sync
+     ▼
+Kubernetes (Kind)
+     │
+     ├── Ingress NGINX
+     ├── API (.NET)
+     └── PostgreSQL
 ```
 
 # 🛠 Tecnologias
@@ -90,9 +91,15 @@ GitHub Container Registry
 - Helm
 - Kustomize
 
-### GitOps (planejado)
+### GitOps
 
 - ArgoCD
+- Applications
+- Projects
+- Auto Sync
+- Self Heal
+- Helm integration
+- GitOps declarativo
 
 ### Observabilidade (planejado)
 
@@ -213,6 +220,7 @@ O projeto utiliza **Semantic Versioning**.
 | v0.6.0 | GitHub Actions e CI |
 | v0.7.0 | Kubernetes (Kind, Deployments, Services, Ingress, PVCs) |
 | v0.8.0 | Helm Charts, Templates, ConfigMaps, Secrets e Releases |
+| v0.9.0 | GitOps com ArgoCD, Applications, Projects e Auto Sync |
 ---
 
 # ▶ Como executar
@@ -277,6 +285,37 @@ helm upgrade devops-playground ./helm/devops-playground
 
 ---
 
+# 🔄 GitOps com ArgoCD
+
+O projeto utiliza o ArgoCD para implementar um fluxo GitOps sobre o cluster Kubernetes.
+
+O Helm Chart da aplicação é utilizado como fonte de definição dos recursos Kubernetes, enquanto o ArgoCD monitora o repositório Git e mantém o estado do cluster sincronizado com o estado desejado.
+
+## Recursos utilizados
+
+- ArgoCD Application
+- ArgoCD Project
+- Helm Chart
+- Auto Sync
+- Self Heal
+- Automated Prune
+
+## Fluxo GitOps
+
+```text
+GitHub
+   │
+   ▼
+ArgoCD
+   │
+   ▼
+Helm Chart
+   │
+   ▼
+Kubernetes
+
+---
+
 # 📈 Roadmap
 
 - [x] Semana 1 - Ambiente
@@ -287,7 +326,7 @@ helm upgrade devops-playground ./helm/devops-playground
 - [x] Semana 6 - GitHub Actions
 - [x] Semana 7 - Kubernetes
 - [x] Semana 8 - Helm
-- [ ] Semana 9 - ArgoCD
+- [x] Semana 9 - ArgoCD
 - [ ] Semana 10 - Terraform
 - [ ] Semana 11 - Ansible
 - [ ] Semana 12 - Observabilidade
